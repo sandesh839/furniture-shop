@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Banners extends Model
 {
     use HasFactory;
-    protected $fillable = ['priority', 'name'];
+    
+    protected $fillable = ['title', 'image'];
 }

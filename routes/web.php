@@ -68,12 +68,13 @@ Route::get('/viewproduct', [ProductController::class, 'index'])->name('viewprodu
 
 
 //Banners
-Route::get('banner',[BannersController::class,'index'])->name('banner.index');
-Route::post('/banner/store',[BannersController::class,'store'])->name('banner.store');
-Route::get('/banner/create',[BannersController::class,'create'])->name('banner.create');
-Route::get('/banner/{id}/edit',[BannersController::class,'edit'])->name('banner.edit');
-Route::post('/banner/{id}/update',[BannersController::class,'update'])->name('banner.update');
-Route::get('/banner/{id}/destroy',[BannersController::class,'destroy'])->name('banner.destroy');
+
+// Route::get('banner',[BannersController::class,'index'])->name('banner.index');
+// Route::post('/banner/store',[BannersController::class,'store'])->name('banner.store');
+// Route::get('/banner/create',[BannersController::class,'create'])->name('banner.create');
+// Route::get('/banner/{id}/edit',[BannersController::class,'edit'])->name('banner.edit');
+// Route::post('/banner/{id}/update',[BannersController::class,'update'])->name('banner.update');
+// Route::get('/banner/{id}/destroy',[BannersController::class,'destroy'])->name('banner.destroy');
 });
 
 Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth', 'admin'])->name('dashboard');
@@ -86,6 +87,9 @@ Route::middleware('auth')->group(function () {
 
 
 //profiles
+Route::middleware(['auth'])->group(function () {
+    // Route::resource('/dashboard/banners', BannersController::class);
+});
 
 
 require __DIR__.'/auth.php';

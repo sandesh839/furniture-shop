@@ -118,13 +118,13 @@
     </div>
 
     {{-- Empty Cart Message --}}
-    @if($carts->isEmpty())
+    {{-- @if($carts->isEmpty())
         <div class="mt-8 text-center">
             <p class="text-lg text-gray-500">Your cart is currently empty. Start shopping now!</p>
             <a href="" 
                class="mt-4 inline-block bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">Go to Shop</a>
         </div>
-    @endif
+    @endif --}}
 </div>
 
 @endsection

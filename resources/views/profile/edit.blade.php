@@ -1,29 +1,31 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends(auth()->user()->role == 'admin' ? 'layouts.app' : 'layouts.master')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
+@section('content')
+<div class="container mx-auto py-6">
+    <div class="flex justify-center">
+        <div class="w-full max-w-lg">
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h2 class="text-3xl font-bold text-red-900 mb-4 text-center">Profile Information</h2>
+                <div class="space-y-4">
+                    <div>
+                        <strong class="block text-gray-700">Name:</strong>
+                        <p class="text-gray-600">{{ auth()->user()->name }}</p>
+                    </div>
+                    <div>
+                        <strong class="block text-gray-700">Email:</strong>
+                        <p class="text-gray-600">{{ auth()->user()->email }}</p>
+                    </div>
+                    <div>
+                        <strong class="block text-gray-700">Phone:</strong>
+                        <p class="text-gray-600">{{ auth()->user()->phone ?? 'N/A' }}</p>
+                    </div>
+                    <div>
+                        <strong class="block text-gray-700">Address:</strong>
+                        <p class="text-gray-600">{{ auth()->user()->address ?? 'N/A' }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection

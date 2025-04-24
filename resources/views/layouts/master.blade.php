@@ -231,7 +231,8 @@
                 <div class="absolute hidden group-hover:block top-8 -right-10 bg-white shadow w-32 rounded-md border">
                     <a href="{{route('mycart')}}" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Cart</a>
                     <a href="{{ route('myorder') }}" class="block py-2 px-4 hover:bg-gray-200">My Orders</a>
-                    <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Profile</a>
+                    
+                    <a href="{{route('profile.edit')}}" class="block py-2 hover:bg-gray-200 p-4 rounded-md">My Profile</a>
                     {{-- <a href="" class="block py-2 hover:bg-gray-200 p-4 rounded-md">Logout</a> --}}
                     <form action="{{route('logout')}}" method="POST">
                         @csrf

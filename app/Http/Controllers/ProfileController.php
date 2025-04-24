@@ -26,16 +26,42 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Fill validated data into the user
+        $user->fill($request->validated());
+
+        // Check if email is updated and set the email_verified_at field to null
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        // Update profile picture if a new file is uploaded
+        if ($request->hasFile('profilepicture')) {
+            // Delete old profile picture if it exists
+            $oldprofilepicture = $user->profilepicture;
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+            if ($oldprofilepicture && file_exists(public_path('images/profilepictures/' . $oldprofilepicture))) {
+                unlink(public_path('images/profilepictures/' . $oldprofilepicture));  // Delete the old profile picture
+            }
+
+            // Store new profile picture and update the database
+            $profilepicture = $request->file('profilepicture');
+            $profilepictureName = time() . '.' . $profilepicture->getClientOriginalExtension();  // Create a unique name
+            $profilepicture->move(public_path('images/profilepictures'), $profilepictureName);  // Store the picture
+
+            // Update the user's profile picture in the database
+            $user->profilepicture = $profilepictureName;
+        }
+
+
+        // Save the updated user data
+        $user->save();
+
+        // Redirect with success message
+        return Redirect::route('profile.edit')->with('success', 'Profile Updated Successfully');
     }
+
 
     /**
      * Delete the user's account.

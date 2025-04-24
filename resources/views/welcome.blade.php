@@ -28,7 +28,7 @@
     </div>
 </nav> --}}
 
-<!-- Banner Section -->
+
 <section class="banner-section my-6">
     <div class="container mx-auto relative">
         <!-- Banner Slider Container -->
@@ -39,14 +39,16 @@
                 <div class="w-full h-48 md:h-64 flex-shrink-0">
                     <img src="{{ asset('images/banner.jpg') }}" alt="Discount Banner 1" class="w-full h-full object-cover">
                 </div>
-                <!-- Second Banner -->
+                
+
                 <div class="w-full h-48 md:h-64 flex-shrink-0">
                     <img src="{{ asset('images/banner1.jpg') }}" alt="Discount Banner 2" class="w-full h-full object-cover">
                 </div>
-                <!-- Add more banners here -->
+                <
+
             </div>
 
-            <!-- Left/Right Navigation -->
+            
             <div class="absolute inset-y-0 left-0 flex items-center">
                 <button id="prev" class="bg-gray-800 text-white px-3 py-2 rounded-full hover:bg-gray-600">
                     <i class="ri-arrow-left-s-line"></i>
@@ -61,42 +63,42 @@
     </div>
 </section>
 
-<!-- JavaScript for slider navigation -->
+
 <script>
     const slider = document.getElementById('slider');
 const next = document.getElementById('next');
 const prev = document.getElementById('prev');
 let currentSlide = 0;
 
-// Function to move the slider to the next slide
+
 const moveToNextSlide = () => {
     currentSlide = (currentSlide < slider.children.length - 1) ? currentSlide + 1 : 0;
     slider.style.transform = `translateX(-${currentSlide * 100}%)`;
 };
 
-// Function to move the slider to the previous slide
+
 const moveToPrevSlide = () => {
     currentSlide = (currentSlide > 0) ? currentSlide - 1 : slider.children.length - 1;
     slider.style.transform = `translateX(-${currentSlide * 100}%)`;
 };
 
-// Event listeners for next and previous buttons
+
 next.addEventListener('click', moveToNextSlide);
 prev.addEventListener('click', moveToPrevSlide);
 
-// Auto-slide every 5 seconds
+
 setInterval(moveToNextSlide, 5000); // 5000 milliseconds = 5 seconds
 
 </script>
 
-<!-- Main Content -->
+
 <div class="container mx-auto px-4 mt-8">
     <div class="text-center mb-6">
         <h1 class="text-2xl md:text-3xl font-bold">Latest Products</h1>
         <p class="text-gray-700">Discover our latest offerings and find the perfect piece for your home!</p>
     </div>
 
-    <!-- On Sale and Shop All Products Links -->
+    
     <div class="flex justify-between items-center mb-6 flex-wrap">
         <a href="" class="text-lg font-semibold text-red-600 hover:text-red-800 mb-2 md:mb-0">
             <div class="flex items-center">
